@@ -77,6 +77,10 @@ GEM
     ffi (1.9.25)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    hirb (0.7.3)
+    hirb-unicode-steakknife (0.0.8)
+      hirb (~> 0.5)
+      unicode-display_width (~> 1.1)
     i18n (1.1.1)
       concurrent-ruby (~> 1.0)
     jbuilder (2.8.0)
@@ -238,6 +242,8 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
   factory_bot_rails
+  hirb
+  hirb-unicode-steakknife
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
