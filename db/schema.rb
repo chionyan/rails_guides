@@ -10,14 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_14_093240) do
+ActiveRecord::Schema.define(version: 2018_11_14_085454) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "apples", force: :cascade do |t|
-    t.string "variety"
-  end
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -47,6 +43,10 @@ ActiveRecord::Schema.define(version: 2018_11_14_093240) do
     t.index ["article_id"], name: "index_comments_on_article_id"
   end
 
+  create_table "distributors", force: :cascade do |t|
+    t.string "zipcode"
+  end
+
   create_table "products", comment: "プロダクトのテーブル", force: :cascade do |t|
     t.string "upc_code"
     t.text "part_number"
@@ -61,7 +61,8 @@ ActiveRecord::Schema.define(version: 2018_11_14_093240) do
     t.string "string"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "email"
+    t.string "email_address"
+    t.string "home_page_url"
   end
 
   add_foreign_key "comments", "articles"
