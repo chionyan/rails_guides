@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_14_065409) do
+ActiveRecord::Schema.define(version: 2018_11_14_070329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2018_11_14_065409) do
 
   create_table "products", comment: "プロダクトのテーブル", force: :cascade do |t|
     t.string "upc_code"
-    t.string "part_number"
+    t.text "part_number"
     t.index ["part_number"], name: "index_products_on_part_number"
   end
 
