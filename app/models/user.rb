@@ -5,4 +5,5 @@ class User < ApplicationRecord
   validates :legacy_code, format: { with: /\A[a-zA-Z]+\z/, message: "英文字のみが使用できます" }
   validates :size, inclusion: { in: %w(small medium large), message: "%{value} のサイズは無効です" }
   validates :bio, length: { maximum: 500 }
+  validates :password, length: { in: 6..20 }
 end
