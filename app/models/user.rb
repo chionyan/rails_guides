@@ -6,4 +6,5 @@ class User < ApplicationRecord
   validates :size, inclusion: { in: %w(small medium large), message: "%{value} のサイズは無効です" }
   validates :bio, length: { maximum: 500 }
   validates :password, length: { in: 6..20 }
+  validates :registration_number, length: { is: 6 }
 end
