@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_15_083745) do
+ActiveRecord::Schema.define(version: 2018_11_15_085824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,9 @@ ActiveRecord::Schema.define(version: 2018_11_15_083745) do
     t.string "subdomain"
     t.string "legacy_code"
     t.string "size"
+    t.string "bio"
+    t.string "password"
+    t.string "registration_number"
   end
 
   add_foreign_key "articles", "authors"
