@@ -8,5 +8,5 @@ class User < ApplicationRecord
   validates :password, length: { in: 6..20 }
   validates :registration_number, length: { is: 6 }
   validates :points, numericality: true
-  validates :games_played, numericality: { less_than_or_equal_to: 6 }
+  validates :games_played, numericality: { other_than: 6 }
 end
