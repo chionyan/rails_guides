@@ -25,4 +25,11 @@ class User < ApplicationRecord
   end
 
   validates :age, numericality: { message: '%{value} seems wrong' }
+  validates :username,
+            uniqueness: {
+              message: lambda do |object, data|
+                "Hey #{object.name}!, #{data[:value]} is taken already!
+                Try again #{Time.zone.tomorrow}"
+              end,
+            }
 end
