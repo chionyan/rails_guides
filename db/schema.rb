@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_19_070619) do
+ActiveRecord::Schema.define(version: 2018_11_19_073916) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,8 @@ ActiveRecord::Schema.define(version: 2018_11_19_070619) do
     t.float "points"
     t.integer "games_played"
     t.boolean "boolean_field"
+    t.string "first_name"
+    t.string "last_name"
   end
 
   add_foreign_key "articles", "authors"
