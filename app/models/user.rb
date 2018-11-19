@@ -9,4 +9,6 @@ class User < ApplicationRecord
   validates :registration_number, length: { is: 6 }
   validates :points, numericality: true
   validates :games_played, numericality: { even: true }
+  validates :boolean_field, inclusion: { in: [true, false] }
+  validates :boolean_field, exclusion: { in: [nil] }
 end
