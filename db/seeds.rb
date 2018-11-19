@@ -5,7 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create(name: 'hoge', email: 'hoge@example.com')
+User.create(name: 'hoge',
+            email: 'hoge@example.com',
+            legacy_code: 'abc',
+            size: 'large',
+            bio: 'ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDE',
+            password: 'ABCDEF',
+            registration_number: '123456',
+            points: 1.25,
+            games_played: 6,)
 
 5.times do |i|
   Product.create(name: "Product ##{i}", description: 'A product.')
