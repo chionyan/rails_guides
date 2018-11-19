@@ -21,4 +21,7 @@ class User < ApplicationRecord
   validates :occupation, absence: true
 
   validates_with GoodnessValidator, fields: [:first_name, :last_name]
+  validates_each :first_name, :last_name do |record, attr, value|
+    record.errors.add(attr, 'must start with upper case') if value =~ /\A[a-z]/
+  end
 end
