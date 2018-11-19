@@ -1,6 +1,6 @@
 class GoodnessValidator < ActiveModel::Validator
   def validate(record)
-    record.errors[:base] << 'これは悪人だ' if record.first_name == 'Evil'
+    record.errors[:base] << 'これは悪人だ' if options[:fields].any? { |field| record.send(field) == 'Evil' }
   end
 end
 
@@ -20,5 +20,5 @@ class User < ApplicationRecord
   validates :boolean_field, exclusion: { in: [nil] }
   validates :occupation, absence: true
 
-  validates_with GoodnessValidator
+  validates_with GoodnessValidator, fields: [:first_name, :last_name]
 end
