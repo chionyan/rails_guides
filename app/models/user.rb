@@ -23,4 +23,6 @@ class User < ApplicationRecord
   validates_each :first_name, :last_name do |record, attr, value|
     record.errors.add(attr, 'must start with upper case') if value =~ /\A[a-z]/
   end
+
+  validates :age, numericality: { message: '%{value} seems wrong' }
 end
