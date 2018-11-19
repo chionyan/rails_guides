@@ -6,7 +6,7 @@ end
 
 class User < ApplicationRecord
   validates :name, presence: { message: 'must be given please' }
-  validates :email, confirmation: true, uniqueness: true, on: :create
+  validates :email, confirmation: true, uniqueness: true, on: :update
   validates :subdomain, exclusion: { in: %w[www us ca jp], message: '%{value}は予約済みです' }
   validates :legacy_code, format: { with: /\A[a-zA-Z]+\z/, message: '英文字のみが使用できます' }
   validates :size, inclusion: { in: %w[small medium large], message: '%{value} のサイズは無効です' }, allow_blank: true
