@@ -15,7 +15,9 @@
               registration_number: '123456',
               points: 1.25,
               games_played: 6,
-              boolean_field: false,)
+              boolean_field: false,
+              age: 22,
+              username: "hoge#{i}",)
 end
 
 5.times do |i|
