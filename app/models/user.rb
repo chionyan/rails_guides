@@ -1,3 +1,9 @@
+class GoodnessValidator < ActiveModel::Validator
+  def validate(record)
+    record.errors[:base] << 'これは悪人だ' if record.first_name == 'Evil'
+  end
+end
+
 class User < ApplicationRecord
   validates :name, presence: true, length: { minimum: 2, too_short: '%{count}以上入力してください' },
                    uniqueness: { case_sensitive: false }
@@ -13,4 +19,6 @@ class User < ApplicationRecord
   validates :boolean_field, inclusion: { in: [true, false] }
   validates :boolean_field, exclusion: { in: [nil] }
   validates :occupation, absence: true
+
+  validates_with GoodnessValidator
 end
