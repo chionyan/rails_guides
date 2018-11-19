@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  validates :name, presence: true, length: { minimum: 2, too_short: '%{count}以上入力してください' }
+  validates :name, presence: true, length: { minimum: 2, too_short: '%{count}以上入力してください' },
+                   uniqueness: { case_sensitive: false }
   validates :email, confirmation: true, uniqueness: true
   validates :subdomain, exclusion: { in: %w[www us ca jp], message: '%{value}は予約済みです' }
   validates :legacy_code, format: { with: /\A[a-zA-Z]+\z/, message: '英文字のみが使用できます' }
