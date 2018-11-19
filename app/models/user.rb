@@ -11,4 +11,5 @@ class User < ApplicationRecord
   validates :games_played, numericality: { even: true }
   validates :boolean_field, inclusion: { in: [true, false] }
   validates :boolean_field, exclusion: { in: [nil] }
+  validates :occupation, absence: true
 end
