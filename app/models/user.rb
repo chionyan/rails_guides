@@ -17,6 +17,6 @@ class User < ApplicationRecord
   validates :boolean_field, exclusion: { in: [nil] }
   validate :a_method_used_for_validation_purposes,
            def a_method_used_for_validation_purposes
-             errors.add(:name, 'は以下の文字を含むことができません !@#%*()_-+=') if /[!@#%*()_\-+=]+/.match?(name)
+             errors.add(:name, :invalid_characters, not_allowed: '!@#%*()_-+=')
            end
 end
