@@ -18,5 +18,6 @@ class User < ApplicationRecord
   validate :a_method_used_for_validation_purposes,
            def a_method_used_for_validation_purposes
              errors.add(:name, :invalid_characters, not_allowed: '!@#%*()_-+=')
+             errors[:base] << 'この人物は以下の理由で無効です...'
            end
 end
