@@ -4,6 +4,14 @@ class GoodnessValidator < ActiveModel::Validator
   end
 end
 
+class MyValidator < ActiveModel::Validator
+  def validate(record)
+    unless record.name.starts_with? 'X'
+      record.errors[:name] << '名前はXで始まる必要があります'
+    end
+  end
+end
+
 class User < ApplicationRecord
   validates :name, presence: { strict: true }
   validates :subdomain, exclusion: { in: %w[www us ca jp], message: '%{value}は予約済みです' }
@@ -17,6 +25,7 @@ class User < ApplicationRecord
   validates :boolean_field, exclusion: { in: [nil] }
   validates :occupation, absence: true
 
+  validates_with MyValidator
   validates_with GoodnessValidator, fields: [:first_name, :last_name]
   validates_each :first_name, :last_name do |record, attr, value|
     record.errors.add(attr, 'must start with upper case') if value =~ /\A[a-z]/
