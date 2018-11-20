@@ -5,6 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+2.times do |i|
+  User.create(name: "hoge#{i}",
+              email: "hoge#{i}@example.com",
+              legacy_code: 'abc',
+              size: 'large',
+              password: 'ABCDEF',
+              points: 1.25,
+              boolean_field: false,)
+end
+
 5.times do |i|
-  Product.create(name: "Product ##{i}", description: "A product.")
+  Product.create(name: "Product ##{i}", description: 'A product.')
 end
