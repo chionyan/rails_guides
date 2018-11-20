@@ -10,14 +10,9 @@
               email: "hoge#{i}@example.com",
               legacy_code: 'abc',
               size: 'large',
-              bio: 'ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDE',
               password: 'ABCDEF',
-              registration_number: '123456',
               points: 1.25,
-              games_played: 6,
-              boolean_field: false,
-              age: 22,
-              username: "hoge#{i}",)
+              boolean_field: false,)
 end
 
 5.times do |i|

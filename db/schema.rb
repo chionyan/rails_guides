@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_20_082744) do
+ActiveRecord::Schema.define(version: 2018_11_20_090021) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,45 +38,7 @@ ActiveRecord::Schema.define(version: 2018_11_20_082744) do
     t.index ["article_id"], name: "index_comments_on_article_id"
   end
 
-  create_table "computers", force: :cascade do |t|
-    t.string "mouse"
-    t.boolean "trackpad"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "holidays", force: :cascade do |t|
-    t.string "name"
-    t.integer "year"
-    t.integer "month"
-    t.integer "day"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "invoices", force: :cascade do |t|
-    t.date "expiration_date"
-    t.integer "discount"
-    t.integer "total_value"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "line_items", force: :cascade do |t|
-    t.bigint "order_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["order_id"], name: "index_line_items_on_order_id"
-  end
-
   create_table "orders", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "parts", force: :cascade do |t|
-    t.string "name"
-    t.string "part_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -95,29 +57,17 @@ ActiveRecord::Schema.define(version: 2018_11_20_082744) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.string "occupation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email"
-    t.string "subdomain"
     t.string "legacy_code"
     t.string "size"
-    t.string "bio"
     t.string "password"
-    t.string "registration_number"
     t.float "points"
-    t.integer "games_played"
     t.boolean "boolean_field"
-    t.string "first_name"
-    t.string "last_name"
-    t.integer "age"
-    t.string "username"
-    t.string "card_number"
-    t.string "payment_type"
   end
 
   add_foreign_key "articles", "authors"
   add_foreign_key "comments", "articles"
-  add_foreign_key "line_items", "orders"
   add_foreign_key "products", "users"
 end
