@@ -4,9 +4,17 @@ class MyValidator < ActiveModel::Validator
   end
 end
 
+class EmailValidator < ActiveModel::EachValidator
+  def validate_each(record, attribute, value)
+    unless /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/.match?(value)
+      record.errors[attribute] << (options[:message] || 'はメールアドレスではありません')
+    end
+  end
+end
+
 class User < ApplicationRecord
   validates :name, presence: { strict: true }
-  validates :email, presence: true
+  validates :email, presence: true, email: true
   validates :legacy_code, format: { with: /\A[a-zA-Z]+\z/, message: '英文字のみが使用できます' }
   validates :size, inclusion: { in: %w[small medium large], message: '%{value} のサイズは無効です' }, allow_blank: true
   validates :bio, length: { maximum: 500 }
