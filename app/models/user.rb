@@ -7,7 +7,7 @@ class EmailValidator < ActiveModel::EachValidator
 end
 
 class User < ApplicationRecord
-  validates :name, presence: true
+  validates :name, presence: true, length: { minimum: 3 }
   validates :email, presence: true, email: true
   validates :password, length: { in: 6..20 }
   validates :legacy_code, format: { with: /\A[a-zA-Z]+\z/, message: '英文字のみが使用できます' }
