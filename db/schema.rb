@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_21_022253) do
+ActiveRecord::Schema.define(version: 2018_11_21_062944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,7 +65,6 @@ ActiveRecord::Schema.define(version: 2018_11_21_022253) do
     t.string "password"
     t.float "points"
     t.boolean "boolean_field"
-    t.string "login"
   end
 
   add_foreign_key "articles", "authors"
