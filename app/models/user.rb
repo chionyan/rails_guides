@@ -14,4 +14,13 @@ class User < ApplicationRecord
   validates :points, numericality: true
   validates :boolean_field, inclusion: { in: [true, false] }
   validates :boolean_field, exclusion: { in: [nil] }
+  validates :name, presence: true
+
+  before_validation :normalize_name, on: :create
+
+  private
+
+  def normalize_name
+    self.name = name.downcase.titleize
+  end
 end
