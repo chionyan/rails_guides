@@ -15,12 +15,18 @@ class User < ApplicationRecord
   validates :boolean_field, inclusion: { in: [true, false] }
   validates :boolean_field, exclusion: { in: [nil] }
   validates :name, presence: true
+  validates :location, inclusion: { in: ['Set Location'] }
 
   before_validation :normalize_name, on: :create
+  after_validation :set_location, on: [:create, :update]
 
   private
 
   def normalize_name
     self.name = name.downcase.titleize
+  end
+
+  def set_location
+    self.location = 'New Location'
   end
 end
