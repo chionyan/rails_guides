@@ -15,4 +15,12 @@ class User < ApplicationRecord
   validates :points, numericality: true
   validates :boolean_field, inclusion: { in: [true, false] }
   validates :boolean_field, exclusion: { in: [nil] }
+
+  after_initialize do |_user|
+    puts 'オブジェクトは初期化されました'
+  end
+
+  after_find do |_user|
+    puts 'オブジェクトが見つかりました'
+  end
 end
