@@ -7,6 +7,7 @@ class EmailValidator < ActiveModel::EachValidator
 end
 
 class User < ApplicationRecord
+  validates :name, presence: true
   validates :email, presence: true, email: true
   validates :password, length: { in: 6..20 }
   validates :legacy_code, format: { with: /\A[a-zA-Z]+\z/, message: '英文字のみが使用できます' }
@@ -14,19 +15,4 @@ class User < ApplicationRecord
   validates :points, numericality: true
   validates :boolean_field, inclusion: { in: [true, false] }
   validates :boolean_field, exclusion: { in: [nil] }
-  validates :name, presence: true
-  validates :location, inclusion: { in: ['Set Location'] }
-
-  before_validation :normalize_name, on: :create
-  after_validation :set_location, on: [:create, :update]
-
-  private
-
-  def normalize_name
-    self.name = name.downcase.titleize
-  end
-
-  def set_location
-    self.location = 'New Location'
-  end
 end
