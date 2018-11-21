@@ -23,4 +23,8 @@ class User < ApplicationRecord
   after_find do |_user|
     puts 'オブジェクトが見つかりました'
   end
+
+  after_touch do |_user|
+    puts 'オブジェクトにタッチしました'
+  end
 end
