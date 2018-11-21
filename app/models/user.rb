@@ -15,4 +15,14 @@ class User < ApplicationRecord
   validates :points, numericality: true
   validates :boolean_field, inclusion: { in: [true, false] }
   validates :boolean_field, exclusion: { in: [nil] }
+  validates :login, :email, presence: true
+  before_validation :ensure_login_has_a_value
+
+  private
+
+  def ensure_login_has_a_value
+    return false unless login.nil?
+
+    self.login = email if email.present?
+  end
 end
