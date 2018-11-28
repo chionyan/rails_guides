@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :products
+
   validates :name, presence: true
 
   before_validation { puts 'Called "before_validation"' }
