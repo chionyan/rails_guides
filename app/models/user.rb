@@ -4,72 +4,33 @@ class User < ApplicationRecord
   validates :name, presence: true
 
   before_validation { puts 'Called "before_validation"' }
-  after_validation do
-    puts 'Called after_validation'
-    throw :abort if name == 'Bob'
-  end
+  after_validation { puts 'Called after_validation' }
 
   before_save { puts 'Called "before_save"' }
   around_save :around_save
-  after_save do
-    puts 'Called after_save'
-    throw :abort if name == 'Bob'
-  end
+  after_save { puts 'Called after_save' }
 
   before_create { puts 'Called "before_create"' }
   around_create :around_create
-  after_create do
-    puts 'Called after_create'
-    throw :abort if name == 'Bob'
-  end
+  after_create { puts 'Called after_create' }
 
   before_update { puts 'Called "before_update"' }
   around_update :around_update
-  after_update do
-    puts 'Called after_update'
-    throw :abort if name == 'Bob'
-  end
+  after_update { puts 'Called after_update' }
 
   before_destroy { puts 'Called "before_destroy"' }
   around_destroy :around_destroy
-  after_destroy do
-    puts 'Called after_destroy'
-    throw :abort if name == 'Bob'
-  end
+  after_destroy { puts 'Called after_destroy' }
 
-  after_initialize do
-    puts 'Called after_initialize'
-    throw :abort if name == 'Bob'
-  end
-  after_find do
-    puts 'Called after_find'
-    throw :abort if name == 'Bob'
-  end
-  after_touch do
-    puts 'Called after_touch'
-    throw :abort if name == 'Bob'
-  end
+  after_initialize { puts 'Called after_initialize' }
+  after_find { puts 'Called after_find' }
+  after_touch { puts 'Called after_touch' }
 
-  after_commit do
-    puts 'Called after_commit'
-    throw :abort if name == 'Bob'
-  end
-  after_rollback do
-    puts 'Called after_rollback'
-    throw :abort if name == 'Bob'
-  end
-  after_create_commit do
-    puts 'Called after_create_commit'
-    throw :abort if name == 'Bob'
-  end
-  after_update_commit do
-    puts 'Called after_update_commit'
-    throw :abort if name == 'Bob'
-  end
-  after_destroy_commit do
-    puts 'Called after_destroy_commit'
-    throw :abort if name == 'Bob'
-  end
+  after_commit { puts 'Called after_commit' }
+  after_rollback { puts 'Called after_rollback' }
+  after_create_commit { puts 'Called after_create_commit' }
+  after_update_commit { puts 'Called after_update_commit' }
+  after_destroy_commit { puts 'Called after_destroy_commit' }
 
   private
 
