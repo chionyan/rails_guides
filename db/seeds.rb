@@ -16,5 +16,5 @@
 end
 
 5.times do |i|
-  Product.create(name: "Product ##{i}", description: 'A product.')
+  Product.create(name: "Product ##{i}", description: 'A product.', user_id: 1)
 end

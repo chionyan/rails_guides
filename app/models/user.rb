@@ -1,18 +1,60 @@
-class EmailValidator < ActiveModel::EachValidator
-  def validate_each(record, attribute, value)
-    unless /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/.match?(value)
-      record.errors[attribute] << (options[:message] || 'はメールアドレスではありません')
-    end
-  end
-end
-
 class User < ApplicationRecord
-  validates :name, presence: true, length: { minimum: 3 }
-  validates :email, presence: true, email: true
-  validates :password, length: { in: 6..20 }
-  validates :legacy_code, format: { with: /\A[a-zA-Z]+\z/, message: '英文字のみが使用できます' }
-  validates :size, inclusion: { in: %w[small medium large], message: '%{value} のサイズは無効です' }, allow_blank: true
-  validates :points, numericality: true
-  validates :boolean_field, inclusion: { in: [true, false] }
-  validates :boolean_field, exclusion: { in: [nil] }
+  has_many :products
+
+  validates :name, presence: true
+
+  before_validation { puts 'Called "before_validation"' }
+  after_validation { puts 'Called after_validation' }
+
+  before_save { puts 'Called "before_save"' }
+  around_save :around_save
+  after_save { puts 'Called after_save' }
+
+  before_create { puts 'Called "before_create"' }
+  around_create :around_create
+  after_create { puts 'Called after_create' }
+
+  before_update { puts 'Called "before_update"' }
+  around_update :around_update
+  after_update { puts 'Called after_update' }
+
+  before_destroy { puts 'Called "before_destroy"' }
+  around_destroy :around_destroy
+  after_destroy { puts 'Called after_destroy' }
+
+  after_initialize { puts 'Called after_initialize' }
+  after_find { puts 'Called after_find' }
+  after_touch { puts 'Called after_touch' }
+
+  after_commit { puts 'Called after_commit' }
+  after_rollback { puts 'Called after_rollback' }
+  after_create_commit { puts 'Called after_create_commit' }
+  after_update_commit { puts 'Called after_update_commit' }
+  after_destroy_commit { puts 'Called after_destroy_commit' }
+
+  private
+
+  def around_save
+    puts 'Called "around_save(before)"'
+    yield
+    puts 'Called "around_save(after)"'
+  end
+
+  def around_create
+    puts 'Called "around_create(before)"'
+    yield
+    puts 'Called "around_create(after)"'
+  end
+
+  def around_update
+    puts 'Called "around_update(before)"'
+    yield
+    puts 'Called "around_update(after)"'
+  end
+
+  def around_destroy
+    puts 'Called "around_destroy(before)"'
+    yield
+    puts 'Called "around_destroy(after)"'
+  end
 end
