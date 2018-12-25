@@ -1,9 +1,15 @@
 class Product < ApplicationRecord
   belongs_to :user, counter_cache: :products_count
 
-  after_destroy :log_destroy_action
+  before_save :normalize_product_number, if: :name?
 
-  def log_destroy_action
-    puts 'Post destroyed'
+  private
+
+  def normalize_product_number
+    self.product_number = '123456'
+  end
+
+  def name?
+    self.name.present?
   end
 end
