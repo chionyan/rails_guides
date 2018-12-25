@@ -1,3 +1,26 @@
+# == Schema Information
+#
+# Table name: products
+#
+#  id             :bigint(8)        not null, primary key
+#  description    :text
+#  name           :string
+#  part_number    :text
+#  product_number :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  user_id        :bigint(8)
+#
+# Indexes
+#
+#  index_products_on_product_number  (product_number)
+#  index_products_on_user_id         (user_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (user_id => users.id)
+#
+
 class ProductCallbacks
   def self.before_destroy(product)
     if product.product_number.blank?
