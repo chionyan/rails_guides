@@ -5,16 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-2.times do |i|
-  User.create(name: "hoge#{i}",
-              email: "hoge#{i}@example.com",
-              legacy_code: 'abc',
-              size: 'large',
-              password: 'ABCDEF',
-              points: 1.25,
-              boolean_field: false,)
-end
-
-5.times do |i|
-  Product.create(name: "Product ##{i}", description: 'A product.', user_id: 1)
+3.times do |i|
+  auther = Auther.create(name: "Auther ##{i}")
+  2.times  { auther.books.create(published_at: Time.now) } if i == 0
+  1.times  { auther.books.create(published_at: Time.now) } if i == 1
 end
