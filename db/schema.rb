@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_27_040323) do
+ActiveRecord::Schema.define(version: 2018_12_27_040526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,13 @@ ActiveRecord::Schema.define(version: 2018_12_27_040323) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "assemblies_parts", force: :cascade do |t|
+    t.bigint "assembly_id"
+    t.bigint "part_id"
+    t.index ["assembly_id"], name: "index_assemblies_parts_on_assembly_id"
+    t.index ["part_id"], name: "index_assemblies_parts_on_part_id"
   end
 
   create_table "authers", force: :cascade do |t|
@@ -143,6 +150,8 @@ ActiveRecord::Schema.define(version: 2018_12_27_040323) do
   add_foreign_key "appointments", "patients"
   add_foreign_key "appointments", "physicians"
   add_foreign_key "articles", "authors"
+  add_foreign_key "assemblies_parts", "assemblies"
+  add_foreign_key "assemblies_parts", "parts"
   add_foreign_key "books", "authers"
   add_foreign_key "comments", "articles"
   add_foreign_key "products", "users"
