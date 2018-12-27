@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_25_090521) do
+ActiveRecord::Schema.define(version: 2018_12_27_034247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "account_histories", force: :cascade do |t|
+    t.bigint "account_id"
+    t.integer "credit_rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_account_histories_on_account_id"
+  end
 
   create_table "accounts", force: :cascade do |t|
     t.bigint "supplier_id"
@@ -118,6 +126,7 @@ ActiveRecord::Schema.define(version: 2018_12_25_090521) do
     t.integer "products_count", default: 0
   end
 
+  add_foreign_key "account_histories", "accounts"
   add_foreign_key "accounts", "suppliers"
   add_foreign_key "appointments", "patients"
   add_foreign_key "appointments", "physicians"
