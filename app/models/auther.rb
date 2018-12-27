@@ -9,5 +9,5 @@
 #
 
 class Auther < ApplicationRecord
-  has_many :books, dependent: :destroy
+  has_many :books, dependent: :destroy, inverse_of: 'writer'
 end
