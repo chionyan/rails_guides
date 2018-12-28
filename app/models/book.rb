@@ -18,5 +18,5 @@
 #
 
 class Book < ApplicationRecord
-  belongs_to :writer, class_name: 'Auther', foreign_key: 'auther_id'
+  belongs_to :auther
 end
