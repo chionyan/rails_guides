@@ -28,3 +28,11 @@ Book.all.each do |book|
     book.line_items.create(sentence: "Sample sentence #{i + 1}")
   end
 end
+
+# Supplier(供給者) シードデータ
+Supplier.create(name: 'Supplier 1')
+Supplier.create(name: 'Supplier 2')
+
+# Account(アカウント) シードデータ
+Account.create(account_number: '123', supplier: Supplier.find_by(name: 'Supplier 2'))
+Account.create(account_number: '234', supplier: Supplier.find_by(name: 'Supplier 1'))
