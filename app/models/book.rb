@@ -18,5 +18,5 @@
 #
 
 class Book < ApplicationRecord
-  belongs_to :auther, counter_cache: true
+  belongs_to :auther, touch: true
 end
