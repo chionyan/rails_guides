@@ -18,5 +18,6 @@
 #
 
 class Book < ApplicationRecord
-  belongs_to :auther, -> { where active: true }
+  belongs_to :auther
+  has_many :line_items, dependent: :destroy
 end

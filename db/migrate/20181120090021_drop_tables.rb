@@ -1,16 +1,11 @@
 class DropTables < ActiveRecord::Migration[5.2]
   def up
-    drop_table :line_items
     drop_table :holidays
     drop_table :computers
     drop_table :invoices
   end
 
   def down
-    create_table :line_items do |t|
-      t.references :order, foreign_key: true
-      t.timestamps
-    end
     create_table :holidays do |t|
       t.string :name
       t.integer :year

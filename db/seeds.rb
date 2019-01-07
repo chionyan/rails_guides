@@ -5,15 +5,26 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# Auther シードデータ
 3.times do |i|
-  auther = Auther.create(
+  Auther.create(
     auther_name: "Auther ##{i + 1}",
     auther_number: (i + 1) * 11
   )
-  if i == 0
-    2.times { auther.books.create(published_at: Time.now) }
-  elsif i == 1
-    1.times { auther.books.create(published_at: Time.now) }
-    auther.update(active: false)
+end
+Auther.find(2).update(active: false)
+
+# Book シードデータ
+Auther.all.each do |auther|
+  (Auther.all.size - auther.id).times do
+    auther.books.create(published_at: Time.now)
+  end
+end
+
+# LineItem シードデータ
+Book.all.each do |book|
+  2.times do |i|
+    book.line_items.create(sentence: "Sample sentence #{i + 1}")
   end
 end

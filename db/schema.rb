@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_07_063936) do
+ActiveRecord::Schema.define(version: 2019_01_07_065452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,6 +101,14 @@ ActiveRecord::Schema.define(version: 2019_01_07_063936) do
     t.bigint "manager_id"
   end
 
+  create_table "line_items", force: :cascade do |t|
+    t.text "sentence"
+    t.bigint "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_line_items_on_book_id"
+  end
+
   create_table "orders", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -167,4 +175,5 @@ ActiveRecord::Schema.define(version: 2019_01_07_063936) do
   add_foreign_key "assemblies_parts", "parts"
   add_foreign_key "books", "authers"
   add_foreign_key "comments", "articles"
+  add_foreign_key "line_items", "books"
 end
