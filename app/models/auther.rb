@@ -3,6 +3,7 @@
 # Table name: authers
 #
 #  id            :bigint(8)        not null, primary key
+#  active        :boolean          default(TRUE), not null
 #  auther_name   :string
 #  auther_number :integer
 #  books_count   :integer          default(0)

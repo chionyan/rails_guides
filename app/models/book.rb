@@ -3,7 +3,6 @@
 # Table name: books
 #
 #  id           :bigint(8)        not null, primary key
-#  active       :boolean          default(TRUE), not null
 #  published_at :datetime
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
@@ -19,5 +18,5 @@
 #
 
 class Book < ApplicationRecord
-  belongs_to :auther, touch: true
+  belongs_to :auther, -> { where active: true }
 end

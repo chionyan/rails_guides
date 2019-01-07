@@ -11,9 +11,9 @@
     auther_number: (i + 1) * 11
   )
   if i == 0
-    auther.books.create(published_at: Time.now)
-    auther.books.create(published_at: Time.now, active: false)
+    2.times { auther.books.create(published_at: Time.now) }
   elsif i == 1
-    auther.books.create(published_at: Time.now)
+    1.times { auther.books.create(published_at: Time.now) }
+    auther.update(active: false)
   end
 end
