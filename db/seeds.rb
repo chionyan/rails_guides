@@ -10,6 +10,10 @@
     auther_name: "Auther ##{i + 1}",
     auther_number: (i + 1) * 11
   )
-  2.times  { auther.books.create(published_at: Time.now) } if i == 0
-  1.times  { auther.books.create(published_at: Time.now) } if i == 1
+  if i == 0
+    auther.books.create(published_at: Time.now)
+    auther.books.create(published_at: Time.now, active: false)
+  elsif i == 1
+    auther.books.create(published_at: Time.now)
+  end
 end

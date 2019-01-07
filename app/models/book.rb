@@ -3,6 +3,7 @@
 # Table name: books
 #
 #  id           :bigint(8)        not null, primary key
+#  active       :boolean          default(TRUE), not null
 #  published_at :datetime
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
