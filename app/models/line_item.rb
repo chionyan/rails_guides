@@ -18,5 +18,5 @@
 #
 
 class LineItem < ApplicationRecord
-  belongs_to :book
+  belongs_to :book, -> { includes :auther }
 end
